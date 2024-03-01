@@ -16,16 +16,99 @@
   }
 }
 
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  height: 100%;
+}
+@media (min-width: 640px) {
+  .sm\:mt-5 {
+    margin-top: 1.25rem; /* 20px */
+  }
+  .sm\.left-6	{
+    left: 1.5rem; /* 24px */
+  }
+}
+@media (max-width: 640px) {
+  .hide-below-640 {
+    display: none;
+  }
 }
 
+.m-7 {
+  margin: 1.75rem; /* 28px */
+}
+.mt-14	{
+  margin-top: 3.5rem;
+}
+.bg-grid-slate-900\/\[0\.04\] {
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+.index_beams__yWcJT {
+  background-image: url(https://tailwindcss.com/_next/static/media/hero@75.b2469a49.jpg);
+  background-size: 150rem;
+}
+@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))) or (-webkit-backdrop-filter:blur(0)) {
+  .supports-backdrop-blur\:bg-white\/60 {
+    background-color:#fff9;
+  }
+  .supports-backdrop-blur\:bg-white\/95 {
+    background-color:#fffffff2
+  }
+}
+.bg-light-sky {
+  background-color: rgb(245, 245, 250);
+}
+.ring-slate-sky {
+  box-shadow: rgba(0, 61, 255, 0.3) 0px 0px 0px 2px
+}
+.mt-2\.0	{
+  margin-top: 0.8rem; /* 8px */
+}
+.mt-3 {
+  margin-top: 0.75rem; /* 12px */
+}
+.mt-4\.2 {
+  margin-top: 1.5rem;
+}
+.mt-5	{
+  margin-top: 1.25rem;
+}
+.m-6	{
+  margin: 1.5rem;
+}
+.mt-6	{
+  margin-top: 1.5rem;
+}
+.mt-2\.2	{
+  margin-top: 0.55rem; /* 12px */
+}
+.ml-4	{
+  margin-left: 1rem; /* 16px */
+}
+.ml-7	{
+  margin-left: 1.75rem; /* 28px */
+}
+.top-1\.8	{
+  top: 1.2rem; /* 32px */
+}
+.top-8	{
+  top: 2rem; /* 32px */
+}
+.border-b-4	{
+  border-bottom-width: 4px;
+}
+.pl-12	{
+  padding-left: 3rem; /* 48px */
+}
+.left-2\.1 {
+  left: 1.2rem;
+}
+.left-6	{
+  left: 1.5rem; /* 24px */
+}
+.pl-9	{
+  padding-left: 2.25rem; /* 36px */
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
