@@ -36,7 +36,7 @@ export default function TranslatorPage() {
 
   function performSearch() {
     return (
-      query // search value / hasil 
+      query // search value / hasil.
     );
   }
 
@@ -53,7 +53,7 @@ export default function TranslatorPage() {
 
   const options = {
     method: "GET",
-    url: "http://localhost:5000/translation/get",
+    url: "https://api.mymemory.translated.net/get",
     params: {
       langpair: `${language_get === 'turkish-indonesia' ? 'tr|id' : 'id|tr'}`,
       q: `${value ? value : value_get}`,

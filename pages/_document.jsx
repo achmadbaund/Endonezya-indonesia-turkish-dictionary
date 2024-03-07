@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 // import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider"
-import Container from '../components/Container';
 // import Menu from '@/components/components';
 
 // const inter = Inter({ subsets: ['latin'] });
