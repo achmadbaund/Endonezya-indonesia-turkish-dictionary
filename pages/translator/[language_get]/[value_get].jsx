@@ -12,7 +12,6 @@ export default function TranslatorPage() {
   const [showResults, setShowResults] = useState(false);
   const [query, setQuery] = useState('');
   const [translationResults, setTranslationResults] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(''); 
   const router = useRouter();
   const { language_get, value_get } = router.query;
@@ -41,10 +40,6 @@ export default function TranslatorPage() {
     );
   }
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
     setQuery(inputValue);
@@ -58,7 +53,7 @@ export default function TranslatorPage() {
 
   const options = {
     method: "GET",
-    url: "http://localhost:5000/translation/get",
+    url: "https://api-dictionary-backend.vercel.app/get",
     params: {
       langpair: `${language_get === 'turkish-indonesia' ? 'tr|id' : 'id|tr'}`,
       q: `${value ? value : value_get}`,
@@ -157,7 +152,7 @@ export default function TranslatorPage() {
                   placeholder={language_get}
                 />
                 <button
-                  className={`sm:ml-3 mt-2 sm:mt-0 inline-flex justify-center items-center rounded-lg text-sm font-semibold py-3 px-4 text-white bg-slate-900 text-white hover:bg-slate-700`}
+                  className={`sm:ml-3 mt-2 sm:mt-0 inline-flex justify-center items-center rounded-lg text-sm font-semibold py-3 px-4 bg-slate-900 text-white hover:bg-slate-700`}
                   // style={{ background: '#bf1e2e' }}
                   type="submit"
                 >
@@ -219,7 +214,7 @@ export default function TranslatorPage() {
                       <td className="td-class">Frodo Baggins</td>
                     </tr> */}
             {translationResults && translationResults.length > 0 && (
-              <div className="flex items-center sm:justify-center sm:ml-4 sm:ml-0">
+              <div className="flex items-center sm:justify-center sm:ml-0">
                 <table className="table-auto w-full whitespace-nowrap dark:text-slate-900 text-slate-900 text-left border-separate border-spacing-y-2">
                   <caption className="caption-top mb-3 text-left text-md">
                     Meanings of {`"${value ? value : ''}"`} in : {translationResults.length} result(s)
