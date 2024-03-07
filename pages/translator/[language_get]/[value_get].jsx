@@ -36,7 +36,7 @@ export default function TranslatorPage() {
 
   function performSearch() {
     return (
-      query // search value / hasil 
+      query // search value / hasil.
     );
   }
 
