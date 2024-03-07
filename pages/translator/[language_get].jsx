@@ -48,14 +48,10 @@ export default function TranslatorPage() {
 
   const options = {
     method: "GET",
-    url: "https://api.mymemory.translated.net/get",
+    url: "https://api-dictionary-backend.vercel.app/get",
     params: {
       langpair: `${language_get === 'turkish-indonesia' ? 'tr|id' : 'id|tr'}`,
       q: value,
-    },
-    headers: {
-      "X-RapidAPI-Key": process.env.NEXT_PUBLIC_TRANSLATOR_API_KEY,
-      "X-RapidAPI-Host": process.env.NEXT_PUBLIC_TRANSLATOR_HOST_KEY
     },
   };
 
