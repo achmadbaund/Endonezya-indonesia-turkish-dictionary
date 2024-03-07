@@ -1,6 +1,9 @@
 import { Html, Head, Main, NextScript } from "next/document";
 // import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider"
+import Container from '../components/Container';
+// import Menu from '@/components/components';
+
 // const inter = Inter({ subsets: ['latin'] });
 
 export default function Document() {
@@ -8,20 +11,18 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body className="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
-        
-        {/* <button
-              className="rounded-md h-16 sm:h-20 ml-3 sm:ml-0 sm:px-3 w-3/12 text-white font-bold flex items-center justify-center sm:w-auto"
-              type="submit"
-            >
-              <svg className="w-7 h-7 sm:w-11 sm:h-11" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" 
-                    stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                </g>
-              </svg>
-            </button> */}
+        {/* <div
+          className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem] bg-[url('/public/img/beams-components.png')] bg-[length:1000px_700px] bg-[position:calc(50%_+_190px)_-50px] bg-no-repeat lg:block"
+          aria-hidden="true"
+        >
+          <div
+            className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#9089fc] to-[#fff] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+          />
+        </div> */}
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {/* <Container/> */}
           <Main />
