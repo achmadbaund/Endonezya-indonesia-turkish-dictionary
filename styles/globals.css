@@ -15,18 +15,60 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+.th-class {
+  @apply px-4 py-3 text-gray-900 bg-neutral-100 first:rounded-t-lg last:rounded-b-lg sm:first:rounded-t-none sm:last:rounded-b-none sm:first:rounded-tl-lg sm:first:rounded-bl-lg sm:last:rounded-tr-lg sm:last:rounded-br-lg;
+}
+
+.td-class {
+  @apply px-4 py-3 text-gray-900 bg-neutral-100 first:rounded-t-lg last:rounded-b-lg sm:first:rounded-t-none sm:last:rounded-b-none sm:first:rounded-tl-lg sm:first:rounded-bl-lg sm:last:rounded-tr-lg sm:last:rounded-br-lg
+} 
+
+.tr-class {
+  @apply flex flex-col mb-4 sm:table-row
+}
+
+.suspended-text {
+  @apply text-gray-500
+}
 
 html,
 body {
   height: 100%;
 }
 @media (min-width: 640px) {
+  .sm\:space-x-99 {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
   .sm\:mt-5 {
     margin-top: 1.25rem; /* 20px */
   }
-  .sm\.left-6	{
+  .sm\:left-6	{
     left: 1.5rem; /* 24px */
   }
+  .sm\:left-41 {
+    left: 1.6rem;
+  }
+  .hide-above-640 {
+    display: none;
+  }
+  .sm\:top-1\.8	{
+    top: 1.2rem; /* 32px */
+  }
+  .sm\:top-7	{
+    top: 1.75rem; /* 28px */
+  }
+  .sm\:pl-16	{
+    padding-left: 4rem; /* 64px */
+  }
+  .sm\:pl-3	{
+    padding-left: 0.75rem; /* 12px */
+  }
+  .sm\:mt-14	{
+    margin-top: 3.5rem; /* 56px */
+  }
+
 }
 @media (max-width: 640px) {
   .hide-below-640 {
@@ -40,12 +82,19 @@ body {
 .mt-14	{
   margin-top: 3.5rem;
 }
+.bg-turtouse-yellow {
+  background-color: rgb(221, 249, 51);
+}
 .bg-grid-slate-900\/\[0\.04\] {
   background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 }
 .index_beams__yWcJT {
-  background-image: url(https://tailwindcss.com/_next/static/media/hero@75.b2469a49.jpg);
-  background-size: 150rem;
+  background-image: url(https://tailwindcss.com/_next/static/media/5.de153055.jpg);
+  background-size: 123.25rem 100%;
+  height: 31.0625rem;
+}
+.bg-\[url\(\'\/public\/img\/beams-components\.png\'\)\] {
+  background-image: url(https://tailwindui.com/build/assets/beams-components-24fbfee2.png);
 }
 @supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))) or (-webkit-backdrop-filter:blur(0)) {
   .supports-backdrop-blur\:bg-white\/60 {
@@ -76,6 +125,15 @@ body {
 .m-6	{
   margin: 1.5rem;
 }
+.mt-14	{
+  margin-top: 3.5rem; /* 56px */
+}
+.mt-12	{
+  margin-top: 3rem; /* 48px */
+}
+.mt-8 {
+  margin-top: 2rem; /* 32px */
+}
 .mt-6	{
   margin-top: 1.5rem;
 }
@@ -88,14 +146,32 @@ body {
 .ml-7	{
   margin-left: 1.75rem; /* 28px */
 }
+.top-2\.1	{
+  top: .7rem; 
+}
+.top-2\.2	{
+  top: 0.8rem; 
+}
 .top-1\.8	{
   top: 1.2rem; /* 32px */
 }
 .top-8	{
   top: 2rem; /* 32px */
 }
+.top-1\.6 {
+  top: 1.8rem;
+}
 .border-b-4	{
   border-bottom-width: 4px;
+}
+.pl-3	{
+  padding-left: 0.75rem; /* 12px */
+}
+.pl-10	{
+  padding-left: 2.5rem; /* 40px */
+}
+.pl-11	{
+  padding-left: 2.75rem; /* 44px */
 }
 .pl-12	{
   padding-left: 3rem; /* 48px */
@@ -103,8 +179,14 @@ body {
 .left-2\.1 {
   left: 1.2rem;
 }
+.left-4\.1 {
+  left: 1.6rem;
+}
 .left-6	{
   left: 1.5rem; /* 24px */
+}
+.left-0\.7 {
+  left: .7rem;
 }
 .pl-9	{
   padding-left: 2.25rem; /* 36px */

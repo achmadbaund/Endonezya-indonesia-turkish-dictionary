@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from 'next/router';
-import Container from '../../components/Container';
+import Container from '../../components/container';
 import Link from "next/link";
 
 export default function TranslatorPage() {
@@ -21,7 +21,7 @@ export default function TranslatorPage() {
     // Perform your search logic here
     // For demonstration, let's just display the query in the search results
     return (
-      <p className="p-2">Search results for: {query}</p>
+      <p className="p-2 text-slate-900">{query}</p>
     );
   }
 
@@ -73,10 +73,10 @@ export default function TranslatorPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.request(options);
+      // const response = await axios.request(options);
       const encodedValue = encodeURIComponent(value);
       router.push(`/translator/${language_get}/${encodedValue}`);
-      setTranslationResults(response.data.matches);
+      // setTranslationResults(response.data.matches);
     } catch (err) {
       console.log(err);
     }
@@ -90,7 +90,8 @@ export default function TranslatorPage() {
           onSubmit={handleSubmit}
           className="group relative"
         >
-          <header className="sm:mt-4 text-md text-left dark:text-slate-400">
+          <header className="ext-md text-left dark:text-slate-400">
+            
             <div className="flex" role="tablist" aria-orientation="horizontal">
               <div 
                 className={`ml-4 mr-3 sm:ml-0 w-1/6 sm:w-1/12 relative -mt-px border-b-4 pb-2 pt-4 text-left md:pb-4 md:pt-8 ${language_get === 'turkish-indonesia' ? 'border-blue-500' : 'border-transparent hover:border-slate-400'}`}
@@ -110,7 +111,10 @@ export default function TranslatorPage() {
                       aria-controls="headlessui-tabs-panel-5"
                     >
                       <span className="absolute inset-0 -top-px"></span>
-                        <p className="text-sm dark:text-white">TURKISH</p>
+                        <p className="text-xs dark:text-white text-slate-900">
+                          <br/><br/>
+                          TURKISH
+                        </p>
                     </button>
                   </Link>
                 </h3>
@@ -133,33 +137,23 @@ export default function TranslatorPage() {
                       aria-controls="headlessui-tabs-panel-4"
                     >
                       <span className="absolute inset-0 text-md -top-px"></span>
-                        <p className="text-sm dark:text-white">INDONESIAN</p>
+                        <p className="text-xs dark:text-white text-slate-900">
+                          <br/><br/>
+                          INDONESIAN
+                        </p>
                     </button>
                   </Link>
                 </h3>
               </div>
-              
             </div>
-            <div className="relative flex sm:mx-0 mx-0">
-              <svg className=" h-7 sm:h-11 absolute left-2.1 sm:left-2 top-1.8 text-slate-400 font-bold pointer-events-none" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <g clipPath="url(#clip0_15_152)">
-                      <rect width="24" height="24" fill="none"></rect>
-                      <circle cx="10.5" cy="10.5" r="6.5" stroke="#2f7cff" strokeLinejoin="round"></circle>
-                      <path d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z" 
-                      fill="#2f7cff"></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_15_152">
-                          <rect width="24" height="24" fill="none"></rect>
-                      </clipPath>
-                    </defs>
-                </g>
+            <div className="relative flex sm:mx-0 mx-0 mt-2">
+
+              <svg className="h-7 absolute left-4.1 top-1.8 sm:top-6 text-slate-400 font-bold pointer-events-none" viewBox="0 0 24 24" fill="#2f7cff">
+                <path d="M16.041 15.856c-0.034 0.026-0.067 0.055-0.099 0.087s-0.060 0.064-0.087 0.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-0.782-4.95-2.050s-2.050-3.017-2.050-4.95 0.782-3.682 2.050-4.95 3.017-2.050 4.95-2.050 3.682 0.782 4.95 2.050 2.050 3.017 2.050 4.95c0 1.886-0.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-0.737 5.618-1.968l3.675 3.675c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z"></path>
               </svg>
+
               <input
-                className="ml-4 sm:ml-0 border-none bg-light-sky h-16 sm:h-20 py-2 pl-9 sm:pl-14 rounded-md rounded-r-none w-8/12 sm:w-full text-left leading-6 placeholder-slate-400 text-slate-500 text-lg sm:text-2xl focus:outline-none focus:ring-2 focus:ring-slate-sky focus:ring-offset-2"
+                className="ml-4 sm:ml-0 border-none bg-light-sky h-16 sm:h-20 py-2 pl-9 sm:pl-14 rounded-md rounded-r-none w-8/12 sm:w-full text-left leading-6 placeholder-slate-400 text-slate-900 text-lg sm:text-2xl focus:outline-none focus:ring-2 focus:ring-slate-sky focus:ring-offset-2"
                 type="text"
                 autoFocus
                 value={value}
@@ -235,21 +229,16 @@ export default function TranslatorPage() {
               </div>
             </div>
             {showResults && (
-              <ul className="border w-8/12 border-gray-200 bg-white text-gray-100 dark:border-neutral-800 dark:bg-neutral-900 absolute top-full z-20 mt-2 overflow-auto overscroll-contain rounded-xl py-2.5 shadow-xl md:left-auto md:right-auto contrast-more:border contrast-more:border-gray-900 contrast-more:dark:border-gray-50"
-              >
-                <div className="mx-2.5 mb-2 mt-6 select-none border-b border-black/10 px-2.5 pb-1.5 text-xs font-semibold uppercase text-gray-500 first:mt-0 dark:border-white/20 dark:text-gray-300 contrast-more:border-gray-600 contrast-more:text-gray-900 contrast-more:dark:border-gray-50 contrast-more:dark:text-gray-50"
-                  >
-                  {performSearch()}
-                </div>
-                <li className="mx-2.5 break-words rounded-md contrast-more:border bg-primary-500/10 text-primary-600 contrast-more:border-primary-500"
-                >
-                  <a className="block scroll-m-12 px-2.5 py-2" data-index="0" href="/docs/quick-start#ayro-ui-quick-start-guide">
-                    <div className="mt-1 text-sm leading-[1.35rem] text-gray-600 dark:text-gray-400 contrast-more:dark:text-gray-50">
-                      To start using the <span className="text-primary-600">Ay</span>ro UI components first you’ll have to include some CSS files in the Head tag.There are two ways you can include the CSS files in your project. You can load the files from the assets folder or you can use the CDN.
-                    </div>
-                  </a>
-                </li>
-              </ul>
+              <div className="max-w-screen-xl mx-auto px-4 sm:px-0">
+                <Link href={`/translator/${language_get}/${value ? value : ''}`} className="block">
+                  <div className="mt-2 pl-9 sm:pl-9 overflow-hidden rounded-md bg-white py-2 shadow-xl ring-1 ring-slate-700/10 relative">
+                    <svg className="mt-2 h-6 w-6 absolute left-4.1 sm:left-2 text-slate-400 font-bold pointer-events-none" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.516 6.984v5.25l4.5 2.672-0.75 1.266-5.25-3.188v-6h1.5zM12 20.016q3.281 0 5.648-2.367t2.367-5.648-2.367-5.648-5.648-2.367-5.648 2.367-2.367 5.648 2.367 5.648 5.648 2.367zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93z"></path>
+                    </svg>
+                    {performSearch()}
+                  </div>
+                </Link>
+              </div>
             )}
           </header>
         </form>
