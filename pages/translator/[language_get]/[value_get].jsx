@@ -85,7 +85,7 @@ export default function TranslatorPage() {
 
   return (
     <div>
-      <div className="bg-white shadow-sm ring-1 ring-slate-200 mx-auto max-w-container px-[1rem] flex">
+      <div className="top-0 sticky pb-3 flex overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white">
         <div className="relative z-10 select-none flex">
           <div className="z-20 flex flex-col">
             <div className="relative pt-[2rem]">
@@ -121,7 +121,7 @@ export default function TranslatorPage() {
           </div>
         </div>
         <div 
-          className="relative z-20 max-w-[40rem] sm:mx-0 sm:w-[40rem] sm:max-w-none sm:flex-none sm:pr-4 sm:pt-[0.4rem]"
+            className="relative z-20 max-w-[40rem] sm:mx-0 sm:w-[40rem] sm:max-w-none sm:flex-none sm:pr-4 sm:pt-[0.4rem]"
         >
           <div className="flex flex-wrap gap-6 pb-0 pt-3">
             <Link 
@@ -194,7 +194,7 @@ export default function TranslatorPage() {
         </div>
       </div>
       <div className="top-0 overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white shadow-sm">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 flex max-w-container justify-between space-x-8 py-4 text-sm font-semibold leading-6 text-slate-900">
+        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 flex max-w-container justify-between space-x-8 pb-4 pt-2 text-sm font-semibold leading-6 text-slate-900">
           <div className="flex space-x-8 pl-4 sm:pl-6 lg:pl-8">
             <a href="#result">Result in {language_get}</a>
           </div>
@@ -203,9 +203,9 @@ export default function TranslatorPage() {
           </div>
         </div>
       </div>
-
-      <div className="text-md mx-auto max-w-7xl pl-[2rem] pr-[0.5rem] text-left dark:text-slate-400">
-        <div className="grid grid-cols-6 gap-4 pt-4 pl-[2rem] pr-[0.5rem]">
+      
+      <div className="text-md mx-auto max-w-7xl sm:pl-[2rem] lg:pl-[2rem] pr-[0.5rem] pl-[0.5rem] text-left dark:text-slate-400">
+        <div className="grid grid-cols-6 gap-4 pt-4 sm:pl-[2rem] lg:pl-[2rem] pl-[0.5rem] pr-[0.5rem]">
           <div className="p-4 bg-white rounded-lg ring-1 ring-slate-500/10 col-span-6 sm:col-start-1 sm:col-span-4">
                
             {translationResults && translationResults.length > 0 && (
