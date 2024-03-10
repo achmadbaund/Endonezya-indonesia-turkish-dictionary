@@ -9,7 +9,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+      <body className="antialiased text-slate-500 dark:text-slate-400 bg-neutral-100 dark:bg-slate-900">
         {/* <div
           className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem] bg-[url('/public/img/beams-components.png')] bg-[length:1000px_700px] bg-[position:calc(50%_+_190px)_-50px] bg-no-repeat lg:block"
           aria-hidden="true"
