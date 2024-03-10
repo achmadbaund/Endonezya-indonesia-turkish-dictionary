@@ -85,14 +85,13 @@ export default function TranslatorPage() {
 
   return (
     <div>
-      <div class="bg-white mx-auto max-w-container px-4 sm:px-6 lg:flex lg:px-8">
-        
-        <div class="relative z-10 select-none lg:flex">
-          <div class="z-20 flex flex-col">
-            <div class="relative pt-4">
-              <div class="absolute bottom-0 left-11 right-0 top-8"></div>
-              <div class="pointer-events-auto item-center relative z-10 w-[10.1rem] text-[0.8125rem] leading-5 text-slate-700">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className={`${scrolling ? 'h-16 w-16' : 'h-20 w-20'}`} viewBox="0 0 100 100">
+      <div className="bg-white shadow-sm ring-1 ring-slate-200 mx-auto max-w-container px-[1rem] flex">
+        <div className="relative z-10 select-none flex">
+          <div className="z-20 flex flex-col">
+            <div className="relative pt-[2rem]">
+              <div className="absolute bottom-0 left-11 right-0 top-8"></div>
+              <div className="pointer-events-auto item-center relative z-10 lg:left-[1.9rem] w-[4.1rem] lg:w-[7.1rem] text-[0.8125rem] leading-5 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className={`h-[3.5rem] w-[3.5rem]`} viewBox="0 0 100 100">
                   <path fill="#c7ede6" d="M87.215,56.71C88.35,54.555,89,52.105,89,49.5c0-6.621-4.159-12.257-10.001-14.478 C78.999,35.015,79,35.008,79,35c0-11.598-9.402-21-21-21c-9.784,0-17.981,6.701-20.313,15.757C36.211,29.272,34.638,29,33,29 c-7.692,0-14.023,5.793-14.89,13.252C12.906,43.353,9,47.969,9,53.5C9,59.851,14.149,65,20.5,65c0.177,0,0.352-0.012,0.526-0.022 C21.022,65.153,21,65.324,21,65.5C21,76.822,30.178,86,41.5,86c6.437,0,12.175-2.972,15.934-7.614C59.612,80.611,62.64,82,66,82 c4.65,0,8.674-2.65,10.666-6.518C77.718,75.817,78.837,76,80,76c6.075,0,11-4.925,11-11C91,61.689,89.53,58.727,87.215,56.71z"></path>
                   <path fill="#fdfcef" d="M78.5,71.5V72h3v-0.5c0,0,4.242,0,5.5,0c2.485,0,4.5-2.015,4.5-4.5 c0-2.333-1.782-4.229-4.055-4.455C87.467,62.364,87.5,62.187,87.5,62c0-2.485-2.015-4.5-4.5-4.5c-1.438,0-2.703,0.686-3.527,1.736 C79.333,56.6,77.171,54.5,74.5,54.5c-2.761,0-5,2.239-5,5c0,0.446,0.077,0.87,0.187,1.282C69.045,60.005,68.086,59.5,67,59.5 c-1.781,0-3.234,1.335-3.455,3.055C63.364,62.533,63.187,62.5,63,62.5c-2.485,0-4.5,2.015-4.5,4.5s2.015,4.5,4.5,4.5s9.5,0,9.5,0 H78.5z"></path>
                   <path fill="#472b29" d="M74.5,54c-3.033,0-5.5,2.467-5.5,5.5c0,0.016,0,0.031,0,0.047C68.398,59.192,67.71,59,67,59 c-1.831,0-3.411,1.261-3.858,3.005C63.095,62.002,63.048,62,63,62c-2.757,0-5,2.243-5,5s2.243,5,5,5h15.5 c0.276,0,0.5-0.224,0.5-0.5S78.776,71,78.5,71H63c-2.206,0-4-1.794-4-4s1.794-4,4-4c0.117,0,0.23,0.017,0.343,0.032l0.141,0.019 c0.021,0.003,0.041,0.004,0.062,0.004c0.246,0,0.462-0.185,0.495-0.437C64.232,61.125,65.504,60,67,60 c0.885,0,1.723,0.401,2.301,1.1c0.098,0.118,0.241,0.182,0.386,0.182c0.078,0,0.156-0.018,0.228-0.056 c0.209-0.107,0.314-0.346,0.254-0.573C70.054,60.218,70,59.852,70,59.5c0-2.481,2.019-4.5,4.5-4.5 c2.381,0,4.347,1.872,4.474,4.263c0.011,0.208,0.15,0.387,0.349,0.45c0.05,0.016,0.101,0.024,0.152,0.024 c0.15,0,0.296-0.069,0.392-0.192C80.638,58.563,81.779,58,83,58c2.206,0,4,1.794,4,4c0,0.117-0.017,0.23-0.032,0.343l-0.019,0.141 c-0.016,0.134,0.022,0.268,0.106,0.373c0.084,0.105,0.207,0.172,0.34,0.185C89.451,63.247,91,64.949,91,67c0,2.206-1.794,4-4,4 h-5.5c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5H87c2.757,0,5-2.243,5-5c0-2.397-1.689-4.413-4.003-4.877 C87.999,62.082,88,62.041,88,62c0-2.757-2.243-5-5-5c-1.176,0-2.293,0.416-3.183,1.164C79.219,55.76,77.055,54,74.5,54L74.5,54z"></path>
@@ -122,40 +121,14 @@ export default function TranslatorPage() {
           </div>
         </div>
         <div 
-          class="relative z-20 mx-auto max-w-[40rem] lg:mx-0 lg:w-[40rem] lg:max-w-none lg:flex-none lg:pr-4 lg:pt-6"
+          className="relative z-20 max-w-[40rem] sm:mx-0 sm:w-[40rem] sm:max-w-none sm:flex-none sm:pr-4 sm:pt-[0.4rem]"
         >
-          <form 
-            onSubmit={handleSubmit}
-            className="group relative mt-2"
-            >
-            <div className="flex-col flex mt-0 sm:flex-row">
-              <svg className={`h-7 absolute left-[0.9rem] ${scrolling ? 'top-[0.5rem]' : 'top-[0.8rem]'} text-slate-400 font-bold pointer-events-none`} viewBox="0 0 24 24" fill="#2f7cff">
-                <path d="M16.041 15.856c-0.034 0.026-0.067 0.055-0.099 0.087s-0.060 0.064-0.087 0.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-0.782-4.95-2.050s-2.050-3.017-2.050-4.95 0.782-3.682 2.050-4.95 3.017-2.050 4.95-2.050 3.682 0.782 4.95 2.050 2.050 3.017 2.050 4.95c0 1.886-0.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-0.737 5.618-1.968l3.675 3.675c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z"></path>
-              </svg>
-              <input
-                className={`sm:ml-0 shadow-md rounded-md bg-white ring-1 ring-slate-900/10 hover:ring-slate-300 ${scrolling ? 'h-10' : 'h-12'} py-2 pl-[3rem] w-full sm:w-full text-left leading-6 placeholder-slate-400 text-slate-900 text-lg sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2`}
-                type="text"
-                autoFocus
-                value={value}
-                onChange={handleInputChange}
-                aria-label="Turkish or Indonesia"
-                placeholder={language_get}
-              />
-              
-              <button
-                className={`hide-below-640 sm:ml-3 mt-2 sm:mt-0 ${scrolling ? 'h-10' : 'h-12'} inline-flex justify-center items-center rounded-md text-sm font-semibold py-3 px-5 bg-slate-900 text-white hover:bg-slate-700`}
-                type="submit"
-              >
-                Translate 
-              </button>
-            </div>
-          </form>
-          <div className="flex flex-wrap gap-6 mt-4">
+          <div className="flex flex-wrap gap-6 pb-0 pt-3">
             <Link 
               href={`/translator/turkish-indonesia/${value ? value : ''}`}
             >
-              <button className={`inline-flex ml-1 items-center text-sm font-medium text-slate-500 border-b-4 ${language_get === 'turkish-indonesia' ? 'border-indigo-600' : 'border-transparent hover:border-slate-400'}`}>
-                <svg className='h-6 w-6 sm:h-7 sm:w-7' version="1.1" id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+              <button className={`inline-flex ml-1 items-center text-sm font-medium text-slate-500 border-b-4 ${language_get === 'turkish-indonesia' ? 'border-slate-900' : 'border-transparent hover:border-slate-400'}`}>
+                <svg className='h-[1.3rem] w-[1.4rem]' version="1.1" id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                   <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                   <g id="SVGRepo_iconCarrier">
@@ -178,8 +151,8 @@ export default function TranslatorPage() {
             <Link 
                 href={`/translator/indonesia-turkish/${value ? value : ''}`}
               >
-              <button className={`flex items-center text-sm font-medium text-slate-500 border-b-4 ${language_get === 'indonesia-turkish' ? 'border-indigo-600' : 'border-transparent hover:border-slate-400'}`}>
-                <svg className='h-6 w-6 sm:h-7 sm:w-7' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#000000">
+              <button className={`flex items-center text-sm font-medium text-slate-500 border-b-4 ${language_get === 'indonesia-turkish' ? 'border-slate-900' : 'border-transparent hover:border-slate-400'}`}>
+                <svg className='h-[1.3rem] w-[1.4rem]' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#000000">
                   <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                   <g id="SVGRepo_iconCarrier">
@@ -192,14 +165,38 @@ export default function TranslatorPage() {
               </button>
             </Link>
           </div>
+          <form 
+            onSubmit={handleSubmit}
+            className="group relative "
+            >
+            <div className="flex-col flex mt-0 sm:flex-row">
+              <svg className={`h-[1.5rem] absolute left-[0.9rem] top-[0.6rem] text-slate-400 font-bold pointer-events-none`} viewBox="0 0 24 24" fill="#000">
+                <path d="M16.041 15.856c-0.034 0.026-0.067 0.055-0.099 0.087s-0.060 0.064-0.087 0.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-0.782-4.95-2.050s-2.050-3.017-2.050-4.95 0.782-3.682 2.050-4.95 3.017-2.050 4.95-2.050 3.682 0.782 4.95 2.050 2.050 3.017 2.050 4.95c0 1.886-0.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-0.737 5.618-1.968l3.675 3.675c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z"></path>
+              </svg>
+              <input
+                className={`sm:ml-0 rounded-md bg-white ring-1 ring-slate-900/10 hover:ring-slate-300 h-[2.5rem] py-2 pl-[3rem] w-full sm:w-full text-left leading-6 placeholder-slate-400 text-slate-900 text-lg sm:text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1`}
+                type="text"
+                autoFocus
+                value={value}
+                onChange={handleInputChange}
+                aria-label="Turkish or Indonesia"
+                placeholder={language_get}
+              />
+              
+              <button
+                className={`hide-below-640 sm:ml-3 mt-2 sm:mt-0 h-[2.5rem] inline-flex justify-center items-center rounded-md text-sm font-semibold py-3 px-5 bg-slate-900 text-white hover:bg-slate-700`}
+                type="submit"
+              >
+                Translate 
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-
-
       <div className="top-0 overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white shadow-sm">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 flex max-w-container justify-between space-x-8 py-4 text-sm font-semibold leading-6 text-slate-900">
           <div className="flex space-x-8 pl-4 sm:pl-6 lg:pl-8">
-            <a href="#result">About {translationResults ? (translationResults.length ? translationResults.length : 0) : 0} result(s)</a>
+            <a href="#result">Result in {language_get}</a>
           </div>
           <div className="flex space-x-8 pr-4 sm:pr-6 lg:pr-8">
             <a href="#copy-link">Copy Link</a>
@@ -207,20 +204,10 @@ export default function TranslatorPage() {
         </div>
       </div>
 
-      <div className="text-md mx-auto max-w-7xl sm:px-6 lg:px-8 text-left dark:text-slate-400">
-        <div className="grid grid-cols-6 gap-4 px-4 pt-4 sm:px-6 lg:px-8">
-          <div className="col-span-6 sm:col-start-1 sm:col-span-4">
-                  {/* <thead>
-                    <tr className="text-white">
-                      <th className="px-4 py-2 text-md hidden sm:table-cell md:table-cell lg:table-cell xl:table-cell">Category</th>
-                      <th className="px-4 py-2 text-md">Meaning of</th>
-                      <th className="px-4 py-2 text-md">Translation</th>
-                    </tr>
-                  </thead>
-                  <tr className="tr-class">
-                      <th className="th-class">Name</th>
-                      <td className="td-class">Frodo Baggins</td>
-                    </tr> */}
+      <div className="text-md mx-auto max-w-7xl pl-[2rem] pr-[0.5rem] text-left dark:text-slate-400">
+        <div className="grid grid-cols-6 gap-4 pt-4 pl-[2rem] pr-[0.5rem]">
+          <div className="p-4 bg-white rounded-lg ring-1 ring-slate-500/10 col-span-6 sm:col-start-1 sm:col-span-4">
+               
             {translationResults && translationResults.length > 0 && (
               <div className="flex items-center sm:justify-center sm:ml-0">
                 <table className="table-auto w-full whitespace-nowrap dark:text-slate-900 text-slate-900 text-left border-separate border-spacing-y-2">
@@ -248,7 +235,7 @@ export default function TranslatorPage() {
               </div>
             )}
           </div>
-          <div className="p-4 bg-white sm:col-end-7 sm:col-span-2 col-start-1 col-end-7">
+          <div className="p-4 bg-white rounded-lg ring-1 ring-slate-500/10 sm:col-end-7 sm:col-span-2 col-start-1 col-end-7">
             <div className="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="74996" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1686829" data-type-of="external" data-impression-recorded="true">
               <div className="crayons-sponsorship__header relative">
                 <div className="flex">
@@ -268,7 +255,7 @@ export default function TranslatorPage() {
               </div>
             </div>
           </div>
-          <div className="p-4 bg-white col-span-6 sm:col-start-1 sm:col-span-4">
+          <div className="p-4 bg-white rounded-lg ring-1 ring-slate-500/10 col-span-6 sm:col-start-1 sm:col-span-4">
             <div className="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="74996" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1686829" data-type-of="external" data-impression-recorded="true">
               <div className="crayons-sponsorship__header relative">
                 <div className="flex">
