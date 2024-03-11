@@ -85,12 +85,12 @@ export default function TranslatorPage() {
 
   return (
     <div>
-      <div className="top-0 sticky pb-3 flex overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white">
+      <div className="top-0 sticky pb-2 flex overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white">
         <div className="relative z-10 select-none flex">
           <div className="z-20 flex flex-col">
-            <div className="relative pt-[2rem]">
-              <div className="absolute bottom-0 left-11 right-0 top-8"></div>
-              <div className="pointer-events-auto item-center relative z-10 lg:left-[1.9rem] w-[4.1rem] lg:w-[7.1rem] text-[0.8125rem] leading-5 text-white">
+            <div className="relative sm:pl-[0rem] pt-[2rem] lg:pl-[1rem]">
+              <div className="absolute bottom-0 right-0 top-8"></div>
+              <div className="pointer-events-auto item-center hide-below-640 relative z-10 sm:left-[0.5rem] lg:left-[1.9rem] w-[4.1rem] lg:w-[6.1rem] text-[0.8125rem] leading-5 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className={`h-[3.5rem] w-[3.5rem]`} viewBox="0 0 100 100">
                   <path fill="#c7ede6" d="M87.215,56.71C88.35,54.555,89,52.105,89,49.5c0-6.621-4.159-12.257-10.001-14.478 C78.999,35.015,79,35.008,79,35c0-11.598-9.402-21-21-21c-9.784,0-17.981,6.701-20.313,15.757C36.211,29.272,34.638,29,33,29 c-7.692,0-14.023,5.793-14.89,13.252C12.906,43.353,9,47.969,9,53.5C9,59.851,14.149,65,20.5,65c0.177,0,0.352-0.012,0.526-0.022 C21.022,65.153,21,65.324,21,65.5C21,76.822,30.178,86,41.5,86c6.437,0,12.175-2.972,15.934-7.614C59.612,80.611,62.64,82,66,82 c4.65,0,8.674-2.65,10.666-6.518C77.718,75.817,78.837,76,80,76c6.075,0,11-4.925,11-11C91,61.689,89.53,58.727,87.215,56.71z"></path>
                   <path fill="#fdfcef" d="M78.5,71.5V72h3v-0.5c0,0,4.242,0,5.5,0c2.485,0,4.5-2.015,4.5-4.5 c0-2.333-1.782-4.229-4.055-4.455C87.467,62.364,87.5,62.187,87.5,62c0-2.485-2.015-4.5-4.5-4.5c-1.438,0-2.703,0.686-3.527,1.736 C79.333,56.6,77.171,54.5,74.5,54.5c-2.761,0-5,2.239-5,5c0,0.446,0.077,0.87,0.187,1.282C69.045,60.005,68.086,59.5,67,59.5 c-1.781,0-3.234,1.335-3.455,3.055C63.364,62.533,63.187,62.5,63,62.5c-2.485,0-4.5,2.015-4.5,4.5s2.015,4.5,4.5,4.5s9.5,0,9.5,0 H78.5z"></path>
@@ -121,8 +121,10 @@ export default function TranslatorPage() {
           </div>
         </div>
         <div 
-            className="relative z-20 max-w-[40rem] sm:mx-0 sm:w-[40rem] sm:max-w-none sm:flex-none sm:pr-4 sm:pt-[0.4rem]"
+          // max-w-[40rem]
+            className="relative z-20 px-3 sm:mx-0 w-full sm:w-[40rem] sm:max-w-none sm:flex-none sm:pr-4 sm:pt-[0rem]"
         >
+          <p className={`lg:pt-12 font-bold text-2xl sm:text-4xl hide-above-640 tracking-[-0.04em] text-black sm:leading-[3.5rem]`}>Endonezya. </p>
           <div className="flex flex-wrap gap-6 pb-0 pt-3">
             <Link 
               href={`/translator/turkish-indonesia/${value ? value : ''}`}
@@ -184,7 +186,7 @@ export default function TranslatorPage() {
               />
               
               <button
-                className={`hide-below-640 sm:ml-3 mt-2 sm:mt-0 h-[2.5rem] inline-flex justify-center items-center rounded-md text-sm font-semibold py-3 px-5 bg-slate-900 text-white hover:bg-slate-700`}
+                className={`sm:ml-3 mt-2 sm:mt-0 h-[2.5rem] inline-flex justify-center items-center rounded-md text-sm font-semibold py-3 px-5 bg-slate-900 text-white hover:bg-slate-700`}
                 type="submit"
               >
                 Translate 
@@ -194,7 +196,7 @@ export default function TranslatorPage() {
         </div>
       </div>
       <div className="top-0 overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white shadow-sm">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 flex max-w-container justify-between space-x-8 pb-4 pt-2 text-sm font-semibold leading-6 text-slate-900">
+        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 flex max-w-container justify-between space-x-8 pb-2 pt-2 text-sm font-semibold leading-6 text-slate-900">
           <div className="flex space-x-8 pl-4 sm:pl-6 lg:pl-8">
             <a href="#result">Result in {language_get}</a>
           </div>
