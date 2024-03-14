@@ -3,19 +3,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from "react";
-import { useRouter } from 'next/router';
 import Container from '../components/container';
 import Link from "next/link";
 
 
 export default function Home() {
-  const [query, setQuery] = useState('');
-  const [showResults, setShowResults] = useState(false);
-  const [translatedTo, setTranslatedTo] = useState("indonesia-turkish"); // Default value
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(''); 
-  const router = useRouter();
-  const [inputValue, setInputValue] = useState('');
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
@@ -33,234 +25,194 @@ export default function Home() {
           window.removeEventListener('scroll', handleScroll);
       };
   }, []);
-
-  function performSearch() {
-    // Perform your search logic here
-    // For demonstration, let's just display the query in the search results
-    return (
-      query // result
-    );
-  }
-
-  function handleInputChange(event) {
-    const inputValue = event.target.value;
-    setQuery(inputValue);
-    setInputValue(inputValue);
-    if (inputValue.trim() === '') {
-      setShowResults(false);
-    } else {
-      setShowResults(true);
-    }
-  }
-
-  // Event handler for keyboard shortcut (Cmd+K)
-  function handleKeyDown(event) {
-    if (event.metaKey && event.key === 'k') {
-      event.preventDefault(); // Prevent browser's default behavior for Cmd+K
-      setShowResults(true);
-    }
-  }
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const encodedValue = encodeURIComponent(inputValue);
-  // Redirect to the translator page with the parameter value
-  router.push(`/translator/${translatedTo}/${encodedValue}`);
-};
-
   return (
     <Container>
-      <div className="bg-slate-50 border-b-2 pb-3 text-left w-full dark:text-slate-400">
-        <header className="text-md mx-auto max-w-7xl sm:px-6 lg:px-8 text-left dark:text-slate-400">
-          <div className={`px-4 sm:px-6 lg:px-8 ${scrolling ? 'lg:pb-4' : 'lg:pb-12'}`}>
-            <div className="relative z-20 mx-auto max-w-[40rem] lg:mx-0 lg:w-[40rem] lg:max-w-none lg:flex-none lg:pr-4">
-              <p className={`lg:pt-12 ${scrolling ? 'font-bold text-2xl sm:text-4xl' : 'font-extrabold text-3xl sm:text-5xl'} hide-below-640 tracking-[-0.04em] text-black sm:leading-[3.5rem]`}>Endonezya. </p>
-              <div className="flex flex-wrap gap-6 sm:mt-4">
+       <div className="lg:flex w-full bg-wash dark:bg-wash-dark text-base md:text-lg py-2 sm:py-0 flex-col sm:flex-row z-[100]">
+        <div className="flex flex-wrap gap-6 pl-[4.5rem] sm:pl-[6rem] pt-2">
+          <Link 
+            href={`/translator/turkish-indonesia/`}
+          >
+            <button className={`inline-flex ml-1 items-center text-base font-medium ms-0 sm:ms-1 text-slate-500 border-b-4 border-slate-900`}>
+              <span className="">Turkish</span>
+            </button>
+          </Link>
+          <Link 
+            href={`/translator/indonesia-turkish/`}
+          >
+            <button className={`inline-flex ml-1 items-center text-base font-medium ms-0 sm:ms-1 text-slate-500 border-b-4 border-transparent hover:border-slate-400`}>
+              <span className="">Indonesia</span>
+            </button>
+          </Link>
+        </div>
+      </div>
+      <div className="z-50 sticky top-0">
+        <nav className={`duration-300 backdrop-filter ${scrolling ? 'shadow-md' : ''} backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 px-1.5 lg:pe-5 lg:ps-4 z-50`}>
+          <div className={`flex items-center justify-between w-full sm:w-[69.3%] ${scrolling ? 'pt-[0.5rem]' : ''} pb-[0.5rem] px-[0.5rem] gap-0 sm:gap-3`}>
+            <div className="flex flex-row 3xl:flex-1 hide-below-640">
+              <div className="flex 3xl:flex-1 align-center">
                 <Link 
-                  href={`/translator/turkish-indonesia/${performSearch()}`}
+                  className="active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-full 3xl:rounded-xl inline-flex text-lg font-normal gap-2" 
+                  href="/"
                 >
-                  <button className={`inline-flex ml-1 items-center text-sm font-medium text-slate-500 border-b-4 ${translatedTo === 'turkish-indonesia' ? 'border-indigo-600' : 'border-transparent hover:border-slate-400'}`}>
-                    <svg className='h-6 w-6 sm:h-7 sm:w-7' version="1.1" id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                      <g id="SVGRepo_iconCarrier">
-                          <path fill="#ED1F34" d="M8.258,126.624v258.753c0,19.763,16.022,35.785,35.785,35.785h423.914c19.763,0,35.785-16.022,35.785-35.785V126.624c0-19.763-16.022-35.785-35.785-35.785H44.043C24.28,90.839,8.258,106.86,8.258,126.624z"></path>
-                          <g>
-                            <path fill="#FFFFFF" d="M210.305,337.677c-45.109,0-81.677-36.568-81.677-81.677s36.568-81.677,81.677-81.677c22.245,0,42.402,8.906,57.133,23.33c-19.526-31.397-54.323-52.311-94.019-52.311c-61.115,0-110.658,49.543-110.658,110.658s49.543,110.658,110.658,110.658c39.696,0,74.492-20.915,94.019-52.312C252.708,328.771,232.55,337.677,210.305,337.677z"></path>
-                            <polygon fill="#FFFFFF" points="277.628,256 309.847,243.659 311.627,209.204 333.32,236.033 366.638,227.079 347.826,256 366.638,284.921 333.32,275.967 311.627,302.796 309.847,268.341 "></polygon>
-                          </g>
-                          <g>
-                            <path fill="#121B21" d="M373.32,222.225c-2.012-2.768-5.522-4.01-8.824-3.122l-28.132,7.56l-18.315-22.651c-2.15-2.66-5.718-3.719-8.974-2.661c-3.254,1.057-5.519,4.011-5.695,7.428l-1.503,29.092l-27.202,10.418c-3.194,1.223-5.304,4.291-5.304,7.712s2.11,6.489,5.304,7.712l27.202,10.418l1.503,29.091c0.177,3.416,2.442,6.371,5.695,7.428c0.839,0.273,1.699,0.405,2.551,0.405c2.45,0,4.826-1.092,6.423-3.066l18.315-22.651l28.132,7.56c3.301,0.887,6.813-0.353,8.824-3.122c2.011-2.768,2.106-6.489,0.241-9.357L357.678,256l15.883-24.419C375.426,228.713,375.33,224.993,373.32,222.225z M340.904,260.502l7.057,10.848l-12.498-3.358c-3.152-0.846-6.511,0.243-8.564,2.782l-8.137,10.063l-0.667-12.923c-0.168-3.261-2.243-6.118-5.293-7.286l-12.084-4.629l12.084-4.629c3.05-1.168,5.124-4.024,5.293-7.286l0.667-12.923l8.137,10.063c2.053,2.539,5.415,3.627,8.564,2.782l12.498-3.358l-7.057,10.848C339.124,254.235,339.124,257.765,340.904,260.502z"></path>
-                            <path fill="#121B21" d="M272.605,307.905c-3.261-2.615-7.961-2.384-10.946,0.542c-13.81,13.525-32.048,20.972-51.354,20.972c-34.701,0-64.946-24.63-71.915-58.564c-0.917-4.467-5.281-7.343-9.75-6.428c-4.468,0.917-7.345,5.283-6.428,9.75c8.539,41.579,45.588,71.757,88.094,71.757c4.804,0,9.554-0.377,14.216-1.115c-15.252,8.787-32.767,13.581-51.102,13.581c-56.463,0-102.4-45.937-102.4-102.4s45.937-102.4,102.4-102.4c18.335,0,35.851,4.795,51.102,13.581c-4.662-0.739-9.412-1.115-14.216-1.115c-42.506,0-79.555,30.178-88.094,71.757c-0.918,4.468,1.96,8.833,6.428,9.75c4.463,0.916,8.833-1.96,9.75-6.428c6.969-33.934,37.213-58.564,71.915-58.564c19.306,0,37.544,7.448,51.354,20.972c2.986,2.923,7.685,3.156,10.946,0.542c3.259-2.615,4.052-7.254,1.844-10.803c-21.888-35.195-59.657-56.207-101.03-56.207c-65.57,0-118.916,53.346-118.916,118.916s53.346,118.916,118.916,118.916c41.373,0,79.141-21.013,101.03-56.209C276.657,315.159,275.866,310.52,272.605,307.905z"></path>
-                            <path fill="#121B21" d="M468.324,82.581H43.676C19.593,82.581,0,102.173,0,126.256v259.487c0,24.084,19.593,43.676,43.676,43.676h424.648c24.083,0,43.675-19.593,43.675-43.676V126.256C512,102.173,492.407,82.581,468.324,82.581z M495.484,385.743c0,14.977-12.183,27.16-27.16,27.16H43.676c-14.977,0-27.16-12.183-27.16-27.16V126.256c0-14.976,12.183-27.159,27.16-27.159h424.648c14.976,0,27.159,12.183,27.159,27.159V385.743z"></path>
-                          </g>
-                      </g>
-                    </svg>  
-                    <span className="ml-2.5">Turkish</span>
-                  </button>
-                </Link>
-                
-                <Link 
-                    href={`/translator/indonesia-turkish/${performSearch()}`}
-                  >
-                  <button className={`flex items-center text-sm font-medium text-slate-500 border-b-4 ${translatedTo === 'indonesia-turkish' ? 'border-indigo-600' : 'border-transparent hover:border-slate-400'}`}>
-                    <svg className='h-6 w-6 sm:h-7 sm:w-7' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" fill="#000000">
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                      <g id="SVGRepo_iconCarrier">
-                          <path style={{ fill: '#B21727' }} d="M468.324,90.839H43.676c-19.562,0-35.418,15.857-35.418,35.418V256h495.484V126.257C503.742,106.695,487.884,90.839,468.324,90.839z"></path>
-                          <path style={{ fill: '#FFFFFF' }} d="M8.258,385.743c0,19.562,15.857,35.418,35.418,35.418h424.648c19.561,0,35.418-15.857,35.418-35.418V256H8.258V385.743z"></path>
-                          <path style={{ fill: '#121B21' }} d="M468.324,82.581H43.675C19.593,82.581,0,102.174,0,126.257v259.486c0,24.083,19.593,43.676,43.675,43.676h424.648c24.084,0,43.676-19.594,43.676-43.676V126.257C512,102.174,492.407,82.581,468.324,82.581z M495.484,247.742H74.323c-4.561,0-8.258,3.696-8.258,8.258c0,4.562,3.697,8.258,8.258,8.258h421.161v121.485c0,14.977-12.183,27.16-27.16,27.16H43.675c-14.976,0-27.159-12.183-27.159-27.16V264.258H41.29c4.561,0,8.258-3.696,8.258-8.258c0-4.562-3.697-8.258-8.258-8.258H16.516V126.257c0-14.977,12.183-27.16,27.159-27.16h424.648c14.977,0,27.16,12.183,27.16,27.16V247.742z"></path>
-                      </g>
-                    </svg>
-                    <span className="ml-2.5">Indonesian</span>
-                  </button>
-                </Link>
-              </div>
-            </div>
-            <form 
-              onSubmit={handleSubmit}
-              className="group relative"
-            >
-              <div className="flex-col flex mt-0 sm:flex-row">
-                <svg className={`h-7 absolute left-0.7 sm:left-6 ${scrolling ? 'top-2.1' : 'top-2.1 sm:top-1.8'} text-slate-400 font-bold pointer-events-none`} viewBox="0 0 24 24" fill="#2f7cff">
-                  <path d="M16.041 15.856c-0.034 0.026-0.067 0.055-0.099 0.087s-0.060 0.064-0.087 0.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-0.782-4.95-2.050s-2.050-3.017-2.050-4.95 0.782-3.682 2.050-4.95 3.017-2.050 4.95-2.050 3.682 0.782 4.95 2.050 2.050 3.017 2.050 4.95c0 1.886-0.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-0.737 5.618-1.968l3.675 3.675c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z"></path>
-                </svg>
-                <input
-                  className={`sm:ml-0 border-none bg-neutral-100 ${scrolling ? 'h-12' : 'h-12 sm:h-16'} py-2 pl-11 sm:pl-16 rounded-md w-full sm:w-full text-left leading-6 placeholder-slate-400 text-slate-900 text-lg sm:text-2xl focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2`}
-                  type="text"
-                  autoFocus
-                  value={query}
-                  onChange={handleInputChange}
-                  aria-label="Turkish or Indonesia"
-                  placeholder={translatedTo}
-                />
-                <button
-                  className={`sm:ml-3 mt-2 sm:mt-0 inline-flex justify-center items-center rounded-lg text-sm font-semibold py-3 px-4 bg-slate-900 text-white hover:bg-slate-700`}
-                  // style={{ background: '#bf1e2e' }}
-                  type="submit"
-                >
-                  Translate
-                </button>
-
-              </div>
-            </form>
-          {/* {showResults && (
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-4 mt-2">
-            <ul role="list" className="bg-white p-2 ring-1 ring-slate-900/5 shadow rounded-md">
-              <li className="group/item relative flex items-center justify-between rounded-md p-2 hover:bg-slate-100">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                  <svg className="h-6 w-6 absolute left-1 top-2.2 sm:left-2 text-slate-400 font-bold pointer-events-none" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.516 6.984v5.25l4.5 2.672-0.75 1.266-5.25-3.188v-6h1.5zM12 20.016q3.281 0 5.648-2.367t2.367-5.648-2.367-5.648-5.648-2.367-5.648 2.367-2.367 5.648 2.367 5.648 5.648 2.367zM12 2.016q4.125 0 7.055 2.93t2.93 7.055-2.93 7.055-7.055 2.93-7.055-2.93-2.93-7.055 2.93-7.055 7.055-2.93z"></path>
+                  <svg width="100%" height="100%" viewBox="-10.5 -9.45 21 18.9" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-sm me-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out">
+                    <circle cx="0" cy="0" r="2" fill="currentColor"></circle>
+                    <g stroke="currentColor" stroke-width="1" fill="none">
+                      <ellipse rx="10" ry="4.5"></ellipse>
+                      <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
+                      <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
+                    </g>
                   </svg>
-                  </div>
-                  <div className="pl-3 sm:pl-5 w-full text-sm leading-6">
-                    <Link 
-                      href={`/translator/${translatedTo}/${performSearch()}`}
-                      className="font-normal text-lg text-slate-900"
-                    >
-                      <span className="absolute inset-0 rounded-xl" aria-hidden="true"></span>
-                      {performSearch()}
-                    </Link>
-                  </div>
-                </div>
-              </li>
-            </ul>
+                  <span 
+                    className="sr-only 3xl:not-sr-only"
+                  >
+                    React
+                  </span>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="flex-col flex mt-0 sm:flex-row w-full md:flex 3xl:w-auto 3xl:shrink-0 3xl:justify-center">
+              <button type="button" className="flex 3xl:w-[56rem] 3xl:mx-0 relative ps-4 pe-1 py-1 h-10 bg-gray-30/20 dark:bg-gray-40/20 outline-none focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-start w-full text-gray-30 rounded-full align-middle text-base">
+                <svg width="1em" height="1em" viewBox="0 0 20 20" className="align-middle me-3 text-gray-30 shrink-0 group-betterhover:hover:text-gray-70">
+                    <path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" stroke-width="2" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Search<span className="hidden ms-auto sm:flex item-center me-1"><kbd className="w-5 h-5 border border-transparent me-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center text-xs text-center rounded-md" data-platform="mac">⌘</kbd><kbd className="w-10 h-5 border border-transparent me-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center text-xs text-center rounded-md" data-platform="win">Ctrl</kbd><kbd className="w-5 h-5 border border-transparent me-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center text-xs text-center rounded-md">K</kbd></span>
+              </button>
+              <button
+                className={`sm:ml-3 mt-2 sm:mt-0 h-[2.5rem] inline-flex justify-center items-center rounded-full text-base py-3 px-5 bg-selected dark:bg-selected-dark text-white dark:text-white`}
+                type="submit"
+              >
+                Translate 
+              </button>
+            </div>
           </div>
-          )} */}
-          </div>
-        </header>
+        </nav>
       </div>
-      <div className="top-0 overflow-x-auto whitespace-nowrap border-b transition duration-100 z-50 border-transparent bg-white shadow-sm">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 flex max-w-container justify-between space-x-8 py-4 text-sm font-semibold leading-6 text-slate-900">
-          <div className="flex space-x-8 pl-4 sm:pl-6 lg:pl-8">
-            <a href="#result">Result in {translatedTo}</a>
-          </div>
-          <div className="flex space-x-8 pr-4 sm:pr-6 lg:pr-8">
-            <a href="#copy-link">Copy Link</a>
-          </div>
+      <div className="mx-auto flex flex-col w-full bg-gradient-right dark:bg-gradient-right-dark" style={{contain: 'content'}}>
+        <div className="flex-col gap-2 flex grow w-full my-20 lg:my-32 mx-auto items-center">
+            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
+              <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
+                  <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
+                    <h2 className="leading-xl font-display text-primary dark:text-primary-dark font-semibold text-5xl lg:text-6xl -mt-4 mb-7 w-full max-w-3xl lg:max-w-xl">Upgrade when the future is ready</h2>
+                    <p className="max-w-3xl mx-auto text-lg lg:text-xl text-secondary dark:text-secondary-dark leading-normal">React approaches changes with care. Every React commit is tested on business-critical surfaces with over a billion users. Over 100,000 React components at Meta help validate every migration strategy.</p>
+                    <div className="order-last pt-5">
+                        <p className="max-w-3xl mx-auto text-lg lg:text-xl text-secondary dark:text-secondary-dark leading-normal">The React team is always researching how to improve React. Some research takes years to pay off. React has a high bar for taking a research idea into production. Only proven approaches become a part of React.</p>
+                        <div className="hidden lg:flex justify-start w-full">
+                          <a className="focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark group cursor-pointer w-auto justify-center inline-flex font-bold items-center mt-10 outline-none hover:bg-gray-40/5 active:bg-gray-40/10 hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 leading-tight hover:bg-opacity-80 text-lg py-2.5 rounded-full px-4 sm:px-6 ease-in-out shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark text-primary dark:text-primary-dark" href="/blog">
+                              <svg className="me-2.5 text-primary dark:text-primary-dark" fill="none" width="24" height="24" viewBox="0 0 72 72" aria-hidden="true">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7101 56.3758C13.0724 56.7251 13.6324 57 14.3887 57H57.6113C58.3676 57 58.9276 56.7251 59.2899 56.3758C59.6438 56.0346 59.8987 55.5407 59.9086 54.864C59.9354 53.022 59.9591 50.7633 59.9756 48H12.0244C12.0409 50.7633 12.0645 53.022 12.0914 54.864C12.1013 55.5407 12.3562 56.0346 12.7101 56.3758ZM12.0024 42H59.9976C59.9992 41.0437 60 40.0444 60 39C60 29.5762 59.9327 22.5857 59.8589 17.7547C59.8359 16.2516 58.6168 15 56.9938 15L15.0062 15C13.3832 15 12.1641 16.2516 12.1411 17.7547C12.0673 22.5857 12 29.5762 12 39C12 40.0444 12.0008 41.0437 12.0024 42ZM65.8582 17.6631C65.7843 12.8227 61.8348 9 56.9938 9H15.0062C10.1652 9 6.21572 12.8227 6.1418 17.6631C6.06753 22.5266 6 29.5477 6 39C6 46.2639 6.03988 51.3741 6.09205 54.9515C6.15893 59.537 9.80278 63 14.3887 63H57.6113C62.1972 63 65.8411 59.537 65.9079 54.9515C65.9601 51.3741 66 46.2639 66 39C66 29.5477 65.9325 22.5266 65.8582 17.6631ZM39 21C37.3431 21 36 22.3431 36 24C36 25.6569 37.3431 27 39 27H51C52.6569 27 54 25.6569 54 24C54 22.3431 52.6569 21 51 21H39ZM36 33C36 31.3431 37.3431 30 39 30H51C52.6569 30 54 31.3431 54 33C54 34.6569 52.6569 36 51 36H39C37.3431 36 36 34.6569 36 33ZM24 33C27.3137 33 30 30.3137 30 27C30 23.6863 27.3137 21 24 21C20.6863 21 18 23.6863 18 27C18 30.3137 20.6863 33 24 33Z" fill="currentColor"></path>
+                              </svg>
+                              Read more React news
+                              <svg className="text-primary dark:text-primary-dark rtl:rotate-180" fill="none" width="24" height="24" viewBox="0 0 72 72" aria-hidden="true">
+                                <path className="transition-transform ease-in-out translate-x-[-8px] group-hover:translate-x-[8px]" fill-rule="evenodd" clip-rule="evenodd" d="M40.0001 19.0245C41.0912 17.7776 42.9864 17.6513 44.2334 18.7423L58.9758 33.768C59.6268 34.3377 60.0002 35.1607 60.0002 36.0257C60.0002 36.8908 59.6268 37.7138 58.9758 38.2835L44.2335 53.3078C42.9865 54.3988 41.0913 54.2725 40.0002 53.0256C38.9092 51.7786 39.0355 49.8835 40.2824 48.7924L52.4445 36.0257L40.2823 23.2578C39.0354 22.1667 38.9091 20.2714 40.0001 19.0245Z" fill="currentColor"></path>
+                                <path className="opacity-0 ease-in-out transition-opacity group-hover:opacity-100" d="M60 36.0273C60 37.6842 58.6569 39.0273 57 39.0273H15C13.3431 39.0273 12 37.6842 12 36.0273C12 34.3704 13.3431 33.0273 15 33.0273H57C58.6569 33.0273 60 34.3704 60 36.0273Z" fill="currentColor"></path>
+                              </svg>
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-6/12">
+                    <p className="uppercase tracking-wide font-bold text-sm text-tertiary dark:text-tertiary-dark flex flex-row gap-2 items-center mt-5 lg:-mt-2 w-full">
+                        <svg className="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                          <g fill="none" fill-rule="evenodd" transform="translate(-446 -398)">
+                              <path fill="currentColor" fill-rule="nonzero" d="M95.8838835,240.366117 C95.3957281,239.877961 94.6042719,239.877961 94.1161165,240.366117 C93.6279612,240.854272 93.6279612,241.645728 94.1161165,242.133883 L98.6161165,246.633883 C99.1042719,247.122039 99.8957281,247.122039 100.383883,246.633883 L104.883883,242.133883 C105.372039,241.645728 105.372039,240.854272 104.883883,240.366117 C104.395728,239.877961 103.604272,239.877961 103.116117,240.366117 L99.5,243.982233 L95.8838835,240.366117 Z" transform="translate(356.5 164.5)"></path>
+                              <polygon points="446 418 466 418 466 398 446 398"></polygon>
+                          </g>
+                        </svg>
+                        Latest React News
+                    </p>
+                    <div className="flex-col sm:flex-row flex-wrap flex gap-5 text-start my-5">
+                        <div className="flex-1 min-w-[40%] text-start">
+                          <a className="block h-full w-full rounded-2xl outline-none focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark" href="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
+                              <div className="justify-between p-5 sm:p-5 cursor-pointer w-full h-full flex flex-col flex-1 shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark hover:bg-gray-40/5 active:bg-gray-40/10  hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 rounded-2xl text-xl text-primary dark:text-primary-dark leading-relaxed">
+                                <div className="flex flex-row gap-3 w-full">
+                                    <h2 className="font-semibold flex-1 text-2xl lg:text-3xl hover:underline leading-snug mb-4">React Labs: February 2024</h2>
+                                </div>
+                                <div>
+                                    <div className="flex flex-row justify-start gap-2 items-center text-base text-tertiary dark:text-tertiary-dark">
+                                      <svg className="w-6 h-6 text-tertiary dark:text-tertiary-dark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M27.4865 9C25.8297 9 24.4865 10.3431 24.4865 12C24.4865 13.6569 25.8297 15 27.4865 15V31.1087C27.4865 32.3397 27.1078 33.5409 26.4019 34.5494L13.095 53.5592C10.3114 57.5359 13.1563 63 18.0104 63H54.9626C59.8167 63 62.6616 57.5359 59.878 53.5592L46.5711 34.5494C45.8652 33.5409 45.4865 32.3397 45.4865 31.1087V15C47.1434 15 48.4865 13.6569 48.4865 12C48.4865 10.3431 47.1434 9 45.4865 9H27.4865ZM39.4865 31.1087V15H33.4865V31.1087C33.4865 33.5707 32.7292 35.9732 31.3173 37.9902L28.5104 42H44.4626L41.6557 37.9902C40.2438 35.9732 39.4865 33.5707 39.4865 31.1087ZM18.0104 57L24.3104 48H48.6626L54.9626 57H18.0104Z" fill="currentColor"></path>
+                                      </svg>
+                                      February 15, 2024
+                                    </div>
+                                    <span className="text-base text-secondary dark:text-secondary-dark"></span>
+                                </div>
+                              </div>
+                          </a>
+                        </div>
+                        <div className="flex-1 min-w-[40%] text-start">
+                          <a className="block h-full w-full rounded-2xl outline-none focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark" href="/blog/2023/05/03/react-canaries">
+                              <div className="justify-between p-5 sm:p-5 cursor-pointer w-full h-full flex flex-col flex-1 shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark hover:bg-gray-40/5 active:bg-gray-40/10  hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 rounded-2xl text-xl text-primary dark:text-primary-dark leading-relaxed">
+                                <div className="flex flex-row gap-3 w-full">
+                                    <h2 className="font-semibold flex-1 text-2xl lg:text-3xl hover:underline leading-snug mb-4">React Canaries: Incremental Feature Rollout</h2>
+                                </div>
+                                <div>
+                                    <div className="flex flex-row justify-start gap-2 items-center text-base text-tertiary dark:text-tertiary-dark">
+                                      <svg className="w-6 h-6 text-tertiary dark:text-tertiary-dark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7101 56.3758C13.0724 56.7251 13.6324 57 14.3887 57H57.6113C58.3676 57 58.9276 56.7251 59.2899 56.3758C59.6438 56.0346 59.8987 55.5407 59.9086 54.864C59.9354 53.022 59.9591 50.7633 59.9756 48H12.0244C12.0409 50.7633 12.0645 53.022 12.0914 54.864C12.1013 55.5407 12.3562 56.0346 12.7101 56.3758ZM12.0024 42H59.9976C59.9992 41.0437 60 40.0444 60 39C60 29.5762 59.9327 22.5857 59.8589 17.7547C59.8359 16.2516 58.6168 15 56.9938 15L15.0062 15C13.3832 15 12.1641 16.2516 12.1411 17.7547C12.0673 22.5857 12 29.5762 12 39C12 40.0444 12.0008 41.0437 12.0024 42ZM65.8582 17.6631C65.7843 12.8227 61.8348 9 56.9938 9H15.0062C10.1652 9 6.21572 12.8227 6.1418 17.6631C6.06753 22.5266 6 29.5477 6 39C6 46.2639 6.03988 51.3741 6.09205 54.9515C6.15893 59.537 9.80278 63 14.3887 63H57.6113C62.1972 63 65.8411 59.537 65.9079 54.9515C65.9601 51.3741 66 46.2639 66 39C66 29.5477 65.9325 22.5266 65.8582 17.6631ZM39 21C37.3431 21 36 22.3431 36 24C36 25.6569 37.3431 27 39 27H51C52.6569 27 54 25.6569 54 24C54 22.3431 52.6569 21 51 21H39ZM36 33C36 31.3431 37.3431 30 39 30H51C52.6569 30 54 31.3431 54 33C54 34.6569 52.6569 36 51 36H39C37.3431 36 36 34.6569 36 33ZM24 33C27.3137 33 30 30.3137 30 27C30 23.6863 27.3137 21 24 21C20.6863 21 18 23.6863 18 27C18 30.3137 20.6863 33 24 33Z" fill="currentColor"></path>
+                                      </svg>
+                                      May 3, 2023
+                                    </div>
+                                    <span className="text-base text-secondary dark:text-secondary-dark"></span>
+                                </div>
+                              </div>
+                          </a>
+                        </div>
+                        <div className="flex-1 min-w-[40%] text-start">
+                          <a className="block h-full w-full rounded-2xl outline-none focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark" href="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
+                              <div className="justify-between p-5 sm:p-5 cursor-pointer w-full h-full flex flex-col flex-1 shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark hover:bg-gray-40/5 active:bg-gray-40/10  hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 rounded-2xl text-xl text-primary dark:text-primary-dark leading-relaxed">
+                                <div className="flex flex-row gap-3 w-full">
+                                    <h2 className="font-semibold flex-1 text-2xl lg:text-3xl hover:underline leading-snug mb-4">React Labs: March 2023</h2>
+                                </div>
+                                <div>
+                                    <div className="flex flex-row justify-start gap-2 items-center text-base text-tertiary dark:text-tertiary-dark">
+                                      <svg className="w-6 h-6 text-tertiary dark:text-tertiary-dark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M27.4865 9C25.8297 9 24.4865 10.3431 24.4865 12C24.4865 13.6569 25.8297 15 27.4865 15V31.1087C27.4865 32.3397 27.1078 33.5409 26.4019 34.5494L13.095 53.5592C10.3114 57.5359 13.1563 63 18.0104 63H54.9626C59.8167 63 62.6616 57.5359 59.878 53.5592L46.5711 34.5494C45.8652 33.5409 45.4865 32.3397 45.4865 31.1087V15C47.1434 15 48.4865 13.6569 48.4865 12C48.4865 10.3431 47.1434 9 45.4865 9H27.4865ZM39.4865 31.1087V15H33.4865V31.1087C33.4865 33.5707 32.7292 35.9732 31.3173 37.9902L28.5104 42H44.4626L41.6557 37.9902C40.2438 35.9732 39.4865 33.5707 39.4865 31.1087ZM18.0104 57L24.3104 48H48.6626L54.9626 57H18.0104Z" fill="currentColor"></path>
+                                      </svg>
+                                      March 22, 2023
+                                    </div>
+                                    <span className="text-base text-secondary dark:text-secondary-dark"></span>
+                                </div>
+                              </div>
+                          </a>
+                        </div>
+                        <div className="hidden sm:flex-1 sm:inline">
+                          <a className="block h-full w-full rounded-2xl outline-none focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark" href="/blog/2023/03/16/introducing-react-dev">
+                              <div className="justify-between p-5 sm:p-5 cursor-pointer w-full h-full flex flex-col flex-1 shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark hover:bg-gray-40/5 active:bg-gray-40/10  hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 rounded-2xl text-xl text-primary dark:text-primary-dark leading-relaxed">
+                                <div className="flex flex-row gap-3 w-full">
+                                    <h2 className="font-semibold flex-1 text-2xl lg:text-3xl hover:underline leading-snug mb-4">Introducing react.dev</h2>
+                                </div>
+                                <div>
+                                    <div className="flex flex-row justify-start gap-2 items-center text-base text-tertiary dark:text-tertiary-dark">
+                                      <svg className="w-6 h-6 text-tertiary dark:text-tertiary-dark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7101 56.3758C13.0724 56.7251 13.6324 57 14.3887 57H57.6113C58.3676 57 58.9276 56.7251 59.2899 56.3758C59.6438 56.0346 59.8987 55.5407 59.9086 54.864C59.9354 53.022 59.9591 50.7633 59.9756 48H12.0244C12.0409 50.7633 12.0645 53.022 12.0914 54.864C12.1013 55.5407 12.3562 56.0346 12.7101 56.3758ZM12.0024 42H59.9976C59.9992 41.0437 60 40.0444 60 39C60 29.5762 59.9327 22.5857 59.8589 17.7547C59.8359 16.2516 58.6168 15 56.9938 15L15.0062 15C13.3832 15 12.1641 16.2516 12.1411 17.7547C12.0673 22.5857 12 29.5762 12 39C12 40.0444 12.0008 41.0437 12.0024 42ZM65.8582 17.6631C65.7843 12.8227 61.8348 9 56.9938 9H15.0062C10.1652 9 6.21572 12.8227 6.1418 17.6631C6.06753 22.5266 6 29.5477 6 39C6 46.2639 6.03988 51.3741 6.09205 54.9515C6.15893 59.537 9.80278 63 14.3887 63H57.6113C62.1972 63 65.8411 59.537 65.9079 54.9515C65.9601 51.3741 66 46.2639 66 39C66 29.5477 65.9325 22.5266 65.8582 17.6631ZM39 21C37.3431 21 36 22.3431 36 24C36 25.6569 37.3431 27 39 27H51C52.6569 27 54 25.6569 54 24C54 22.3431 52.6569 21 51 21H39ZM36 33C36 31.3431 37.3431 30 39 30H51C52.6569 30 54 31.3431 54 33C54 34.6569 52.6569 36 51 36H39C37.3431 36 36 34.6569 36 33ZM24 33C27.3137 33 30 30.3137 30 27C30 23.6863 27.3137 21 24 21C20.6863 21 18 23.6863 18 27C18 30.3137 20.6863 33 24 33Z" fill="currentColor"></path>
+                                      </svg>
+                                      March 16, 2023
+                                    </div>
+                                    <span className="text-base text-secondary dark:text-secondary-dark"></span>
+                                </div>
+                              </div>
+                          </a>
+                        </div>
+                    </div>
+                    <div className="flex lg:hidden justify-start w-full">
+                        <a className="focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark group cursor-pointer w-auto justify-center inline-flex font-bold items-center mt-10 outline-none hover:bg-gray-40/5 active:bg-gray-40/10 hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 leading-tight hover:bg-opacity-80 text-lg py-2.5 rounded-full px-4 sm:px-6 ease-in-out shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark text-primary dark:text-primary-dark" href="/blog">
+                          <svg className="me-2.5 text-primary dark:text-primary-dark" fill="none" width="24" height="24" viewBox="0 0 72 72" aria-hidden="true">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7101 56.3758C13.0724 56.7251 13.6324 57 14.3887 57H57.6113C58.3676 57 58.9276 56.7251 59.2899 56.3758C59.6438 56.0346 59.8987 55.5407 59.9086 54.864C59.9354 53.022 59.9591 50.7633 59.9756 48H12.0244C12.0409 50.7633 12.0645 53.022 12.0914 54.864C12.1013 55.5407 12.3562 56.0346 12.7101 56.3758ZM12.0024 42H59.9976C59.9992 41.0437 60 40.0444 60 39C60 29.5762 59.9327 22.5857 59.8589 17.7547C59.8359 16.2516 58.6168 15 56.9938 15L15.0062 15C13.3832 15 12.1641 16.2516 12.1411 17.7547C12.0673 22.5857 12 29.5762 12 39C12 40.0444 12.0008 41.0437 12.0024 42ZM65.8582 17.6631C65.7843 12.8227 61.8348 9 56.9938 9H15.0062C10.1652 9 6.21572 12.8227 6.1418 17.6631C6.06753 22.5266 6 29.5477 6 39C6 46.2639 6.03988 51.3741 6.09205 54.9515C6.15893 59.537 9.80278 63 14.3887 63H57.6113C62.1972 63 65.8411 59.537 65.9079 54.9515C65.9601 51.3741 66 46.2639 66 39C66 29.5477 65.9325 22.5266 65.8582 17.6631ZM39 21C37.3431 21 36 22.3431 36 24C36 25.6569 37.3431 27 39 27H51C52.6569 27 54 25.6569 54 24C54 22.3431 52.6569 21 51 21H39ZM36 33C36 31.3431 37.3431 30 39 30H51C52.6569 30 54 31.3431 54 33C54 34.6569 52.6569 36 51 36H39C37.3431 36 36 34.6569 36 33ZM24 33C27.3137 33 30 30.3137 30 27C30 23.6863 27.3137 21 24 21C20.6863 21 18 23.6863 18 27C18 30.3137 20.6863 33 24 33Z" fill="currentColor"></path>
+                          </svg>
+                          Read more React news
+                          <svg className="text-primary dark:text-primary-dark rtl:rotate-180" fill="none" width="24" height="24" viewBox="0 0 72 72" aria-hidden="true">
+                              <path className="transition-transform ease-in-out translate-x-[-8px] group-hover:translate-x-[8px]" fill-rule="evenodd" clip-rule="evenodd" d="M40.0001 19.0245C41.0912 17.7776 42.9864 17.6513 44.2334 18.7423L58.9758 33.768C59.6268 34.3377 60.0002 35.1607 60.0002 36.0257C60.0002 36.8908 59.6268 37.7138 58.9758 38.2835L44.2335 53.3078C42.9865 54.3988 41.0913 54.2725 40.0002 53.0256C38.9092 51.7786 39.0355 49.8835 40.2824 48.7924L52.4445 36.0257L40.2823 23.2578C39.0354 22.1667 38.9091 20.2714 40.0001 19.0245Z" fill="currentColor"></path>
+                              <path className="opacity-0 ease-in-out transition-opacity group-hover:opacity-100" d="M60 36.0273C60 37.6842 58.6569 39.0273 57 39.0273H15C13.3431 39.0273 12 37.6842 12 36.0273C12 34.3704 13.3431 33.0273 15 33.0273H57C58.6569 33.0273 60 34.3704 60 36.0273Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                    </div>
+                  </div>
+              </div>
+            </div>
         </div>
       </div>
 
-      <div className="text-md mx-auto max-w-7xl sm:px-6 lg:px-8 text-left dark:text-slate-400">
-        <div className="grid grid-cols-6 gap-4 px-4 pt-4 sm:px-6 lg:px-8">
-          <div className="col-span-6 sm:col-start-1 sm:col-span-4">
-                  
-              <div className="flex items-center sm:justify-center sm:ml-0">
-                <table className="table-auto w-full whitespace-nowrap dark:text-slate-900 text-slate-900 text-left border-separate border-spacing-y-2">
-                  <caption className="caption-top mb-3 text-left text-md">
-                    Meanings of result(s)
-                  </caption>
-                  <thead>
-                    <tr className="bg-slate-900 text-white hide-below-640">
-                      <th className="px-4 py-2 text-md hidden sm:table-cell md:table-cell lg:table-cell xl:table-cell">Category</th>
-                      <th className="px-4 py-2 text-md">Meaning of</th>
-                      <th className="px-4 py-2 text-md">Translation</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                </table>
-              </div>
-          </div>
-          <div className="p-4 bg-white sm:col-end-7 sm:col-span-2 col-start-1 col-end-7">
-            <div className="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="74996" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1686829" data-type-of="external" data-impression-recorded="true">
-              <div className="crayons-sponsorship__header relative">
-                <div className="flex">
-                  <a href="/platformsh" target="_blank" rel="noopener" className="flex">
-                    <img width="24" height="24" className="radius-default crayons-sponsorship__image" src="https://media.dev.to/cdn-cgi/image/width=64,height=64,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F4463%2F82fbfc88-f8c9-44b6-abde-c8ec452f1822.png" alt="profile" loading="lazy" />
-                    <div className="crayons-sponsorship__title ml-2 fs-s fw-medium">Platform.sh</div>
-                  </a>
-                  <span className="crayons-sponsorship__indicator c-indicator c-indicator--subtle c-indicator--round fs-2xs fw-medium ml-2 py-1 px-2">Promoted</span>
-                </div>
-              </div>
-              <div className="p-1 pt-3 text-styles text-styles--billboard">
-                <p>
-                  <a href="https://auth.upsun.com/register?utm_source=devto&amp;utm_medium=paid_social&amp;utm_campaign=conversion_upsun_debug_faster">
-                    <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--UYzqGtaH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_350/https://pro.forem.tools/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--753cca82aef31525b935f311d219aefb5538d5d7/debug-much-faster-1200-1200.png" alt="Billboard image" width="1200" height="1200" loading="lazy" />
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="p-4 bg-white col-span-6 sm:col-start-1 sm:col-span-4">
-            <div className="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="74996" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1686829" data-type-of="external" data-impression-recorded="true">
-              <div className="crayons-sponsorship__header relative">
-                <div className="flex">
-                  <span className="crayons-sponsorship__indicator c-indicator c-indicator--subtle c-indicator--round fs-2xs fw-medium ml-2 py-1 px-2">Promoted</span>
-                </div>
-              </div>
-              <div className="p-1 pt-3 text-styles text-styles--billboard">
-                <p>
-                <a href="https://auth.upsun.com/register?utm_source=devto&amp;utm_medium=paid_social&amp;utm_campaign=conversion_upsun_prototype_fast">
-                  <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--LTd8KiFV--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_775/https://pro.forem.tools/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78bb21e3762ff4e4c9962d412f83ccfd91a25cef/prototype-apps-fast-launch-faster-1920-1080.png" alt="Billboard image" width="1920" height="1080" loading="lazy"/>
-
-                </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="p-4 bg-white sm:col-end-7 sm:col-span-2 col-start-1 col-end-7">
-            <div className="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="74996" data-category-click="click" data-category-impression="impression" data-context-type="article" data-special="nothing" data-article-id="1686829" data-type-of="external" data-impression-recorded="true">
-              <div className="crayons-sponsorship__header relative">
-                <div className="flex">
-                  <span className="crayons-sponsorship__indicator c-indicator c-indicator--subtle c-indicator--round fs-2xs fw-medium ml-2 py-1 px-2">Promoted</span>
-                </div>
-              </div>
-              <div className="p-1 pt-3 text-styles text-styles--billboard">
-                <p>
-                <a href="https://aiconusa.techwell.com/?utm_source=devto&amp;utm_medium=referral&amp;utm_campaign=mk-seb-adv-campaign">
-                  <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--6Cd6LnVn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_100%2Cw_350/https://i.imgur.com/sB2gNeN.png" alt="Techwell image" width="940" height="788" loading="lazy"/>
-
-                </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </Container>
     
   );

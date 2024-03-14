@@ -1,14 +1,20 @@
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
-import { ModeToggle } from "./ui/theme-toggle";
+import axios from "axios";
+import { useEffect } from 'react';
+import { useState } from "react";
 import { useRouter } from 'next/router';
+import Link from "next/link";
+import fetchSuggestions from './searchUtils';
 // import Footer from '@/components/Footer';
 
 export default function Container(props) {
-  const [mounted, setMounted] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const [translationResults, setTranslationResults] = useState(null);
   const router = useRouter();
   const { language_get, value_get } = router.query;
+  const [value, setToTranslate] = useState(value_get);
+  const [scrolling, setScrolling] = useState(false);
   const { children, ...customMeta } = props;
   const meta = {
     title: 'endonezyaevi an Indonesian-Turksih dictionany.',
@@ -17,6 +23,94 @@ export default function Container(props) {
     type: 'website',
     ...customMeta
   };
+
+
+  useEffect(() => {
+      const handleScroll = () => {
+          if (window.scrollY > 0) {
+              setScrolling(true);
+          } else {
+              setScrolling(false);
+          }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+
+  function performSearch() {
+    return (
+      value // search value / hasil.
+    );
+  }
+
+  const handleInputChange = async (event) => {
+    const inputValue = event.target.value;
+    setToTranslate(inputValue);
+    if (inputValue.trim() !== '') {
+      const suggestions = await fetchSuggestions(language_get, inputValue);
+      setSuggestions(suggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setToTranslate(suggestion);
+    setSuggestions([]); // Clear suggestions after selection
+  };
+
+  const request = {
+    method: "GET",
+    url: "https://api.mymemory.translated.net/get",
+    params: {
+      langpair: `${language_get === 'turkish-indonesia' ? 'tr|id' : 'id|tr'}`,
+      q: `${value ? value : value_get}`,
+    },
+  };
+
+  // // Send the request
+  // axios.request(options)
+  // .then(response => {
+  //   setTranslationResults(response.data.matches);
+  //   console.log(response.data);
+  // })
+  // .catch(error => {
+  //   // Handle errors here
+  //   console.error(error);
+  // });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.request(request);
+      const encodedValue = encodeURIComponent(value);
+      router.push(`/translator/${language_get}/${encodedValue ? encodedValue : ''}`);
+      setTranslationResults(response.data.matches);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+      const handleScroll = () => {
+          if (window.scrollY > 0) {
+              setScrolling(true);
+          } else {
+              setScrolling(false);
+          }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+
   return (
     <div>
       <Head>
@@ -37,30 +131,6 @@ export default function Container(props) {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      {/* backdrop-blur sticky*/}
-      <nav className="bg-white hide-above-640 top-0 z-40 w-full flex-none transition-colors duration-500 lg:z-50 lg:border-slate-900/10">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
-            <div className="flex flex-1 items-center sm:items-stretch sm:justify-start">
-              <div className="ml-2 flex flex-shrink-0 items-center font-normal text-3xl text-slate-900 dark:text-white">
-                <img className="h-8 w-auto" src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png" alt="Endonezya"></img>
-              </div>
-            </div>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <button type="button" className="relative rounded-full p-1 text-slate-900 dark:text-white focus:outline-none focus:ring-2">
-                <span className="absolute -inset-1.5"></span>
-                <span className="sr-only">Share</span>
-                <div className="flex w-full gap-2 items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="icon-md">
-                      <path fillRule="evenodd" clipRule="evenodd" d="M11.2929 2.29289C11.6834 1.90237 12.3166 1.90237 12.7071 2.29289L16.7071 6.29289C17.0976 6.68342 17.0976 7.31658 16.7071 7.70711C16.3166 8.09763 15.6834 8.09763 15.2929 7.70711L13 5.41421V14C13 14.5523 12.5523 15 12 15C11.4477 15 11 14.5523 11 14V5.41421L8.70711 7.70711C8.31658 8.09763 7.68342 8.09763 7.29289 7.70711C6.90237 7.31658 6.90237 6.68342 7.29289 6.29289L11.2929 2.29289ZM4 13C4.55228 13 5 13.4477 5 14V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V14C19 13.4477 19.4477 13 20 13C20.5523 13 21 13.4477 21 14V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V14C3 13.4477 3.44772 13 4 13Z" 
-                      fill="currentColor"></path>
-                  </svg>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
       <main>
         {children}
         {/* <Footer /> */}
