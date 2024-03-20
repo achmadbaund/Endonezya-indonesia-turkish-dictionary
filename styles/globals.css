@@ -238,6 +238,10 @@ body {
 .border-b-4	{
   border-bottom-width: 4px;
 }
+.border-selected {
+  --tw-border-opacity: 1;
+  border-color:rgb(8 126 164 /var(--tw-border-opacity));
+}
 .pt-11	{
   padding-top: 2.75rem; /* 44px */
 }
