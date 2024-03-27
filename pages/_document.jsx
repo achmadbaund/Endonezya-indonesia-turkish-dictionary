@@ -23,7 +23,7 @@ export default function Document() {
             }}
           />
         </div> */}
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {/* <Container/> */}
           <Main />
           <NextScript />
