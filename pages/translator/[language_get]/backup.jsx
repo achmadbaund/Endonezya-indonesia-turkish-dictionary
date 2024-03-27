@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import Link from "next/link";
-import fetchSuggestions from '../../../components/searchUtils';
+import fetchSuggestions from '../../../components/API';
 
 export default function TranslatorPage() {
   const [suggestions, setSuggestions] = useState([]);
